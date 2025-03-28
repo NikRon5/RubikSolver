@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="CubeCellStyle">
+        <item name="android:layout_width">32dp</item>
+        <item name="android:layout_height">32dp</item>
+        <item name="android:layout_margin">1dp</item>
+        <item name="android:clickable">true</item>
+        <item name="android:background">@drawable/cell_background</item>
+    </style>
+</resources>
