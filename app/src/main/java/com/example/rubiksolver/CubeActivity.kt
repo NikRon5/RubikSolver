@@ -12,6 +12,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.children
+import com.example.rubiksolver.models.CubeColors
 
 class CubeActivity : AppCompatActivity() {
     private var selectedCell: View? = null
