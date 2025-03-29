@@ -3,6 +3,7 @@ package com.example.rubiksolver
 import android.animation.ValueAnimator
 import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.GridLayout
 import androidx.activity.enableEdgeToEdge
@@ -11,6 +12,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.children
+import com.example.rubiksolver.models.CubeColors
 
 class CubeActivity : AppCompatActivity() {
 
@@ -30,16 +32,30 @@ class CubeActivity : AppCompatActivity() {
     }
 
     private fun setupCellsListener(fullCubeGrid: ConstraintLayout) {
-        for (view in fullCubeGrid.children) {
-            val cubeFace = view as? GridLayout ?: continue
+        for (cubeFace in fullCubeGrid.children) {
 
-            for (i in 0 until  cubeFace.childCount) {
-                val cell = cubeFace.getChildAt(i)
+            val cubeFaceGrid = cubeFace as? GridLayout ?: continue
+            val cellColor = getFaceColor(cubeFaceGrid)
+            for (i in 0 until  cubeFaceGrid.childCount) {
+                val cell = cubeFaceGrid.getChildAt(i)
+                initCellColor(cell, cellColor)
                 cell.setOnClickListener { view ->
-                    handleCellSelection(cell)
+                    handleCellSelection(view)
                 }
             }
         }
+    }
+
+    private fun getFaceColor(cubeFaceGrid: GridLayout): Int {
+        val face = cubeFaceGrid.resources.getResourceName(cubeFaceGrid.id)
+            .substringAfter("id/")
+            .substringBefore("_face")
+
+        return CubeColors.centerColors[face]!!
+    }
+
+    private fun initCellColor(cell: View, color: Int) {
+        changeCellColor(cell, color, 0)
     }
 
     private fun handleCellSelection(selectedCell: View) {
