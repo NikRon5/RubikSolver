@@ -1,10 +1,16 @@
 package com.example.rubiksolver
 
+import android.animation.ValueAnimator
+import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
+import android.view.View
+import android.widget.GridLayout
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.children
 
 class CubeActivity : AppCompatActivity() {
 
@@ -17,5 +23,28 @@ class CubeActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        val cellGridLayout : ConstraintLayout = findViewById(R.id.full_grid)
+
+        setupCellsListener(cellGridLayout)
+    }
+
+    private fun setupCellsListener(fullCubeGrid: ConstraintLayout) {
+        for (view in fullCubeGrid.children) {
+            val cubeFace = view as? GridLayout ?: continue
+
+            for (i in 0 until  cubeFace.childCount) {
+                val cell = cubeFace.getChildAt(i)
+                cell.setOnClickListener { view ->
+                    handleCellSelection(cell)
+                }
+            }
+        }
+    }
+
+    private fun handleCellSelection(selectedCell: View) {
+
+    }
+
     }
 }
