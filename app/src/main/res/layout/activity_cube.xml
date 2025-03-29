@@ -5,7 +5,7 @@
     android:id="@+id/cube"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CubeActivity">
+    tools:context=".ui.cube.CubeActivity">
 
     <include
         layout="@layout/full_cube_grid"

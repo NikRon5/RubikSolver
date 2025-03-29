@@ -1,4 +1,4 @@
-package com.example.rubiksolver
+package com.example.rubiksolver.ui.cube
 
 import android.animation.ValueAnimator
 import android.graphics.drawable.GradientDrawable
@@ -12,7 +12,8 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.children
-import com.example.rubiksolver.models.CubeColors
+import com.example.rubiksolver.R
+import com.example.rubiksolver.domain.models.CubeColors
 
 class CubeActivity : AppCompatActivity() {
     private var selectedCell: View? = null
