@@ -46,5 +46,16 @@ class CubeActivity : AppCompatActivity() {
 
     }
 
+    private fun changeCellColor(cell: View, targetColor: Int, duration: Long = 200L) {
+        val cellGradientDrawable = cell.background.mutate() as GradientDrawable
+        val startColor = cellGradientDrawable.color?.defaultColor ?: -1
+
+        ValueAnimator.ofArgb(startColor, targetColor).apply {
+            this.duration = duration
+            addUpdateListener { animator ->
+                cellGradientDrawable.setColor(animator.animatedValue as Int)
+            }
+            start()
+        }
     }
 }
