@@ -8,8 +8,4 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <include
-        layout="@layout/face_grid"
-        android:id="@+id/front_face"/>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
