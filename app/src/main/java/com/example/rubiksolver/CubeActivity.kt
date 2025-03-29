@@ -3,8 +3,8 @@ package com.example.rubiksolver
 import android.animation.ValueAnimator
 import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
-import android.util.Log
 import android.view.View
+import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.GridLayout
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -12,9 +12,9 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.children
-import com.example.rubiksolver.models.CubeColors
 
 class CubeActivity : AppCompatActivity() {
+    private var selectedCell: View? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,8 +58,10 @@ class CubeActivity : AppCompatActivity() {
         changeCellColor(cell, color, 0)
     }
 
-    private fun handleCellSelection(selectedCell: View) {
-
+    private fun handleCellSelection(cell: View) {
+        selectedCell?.scaleToOriginal()
+        selectedCell = cell
+        cell.scaleDown()
     }
 
     private fun changeCellColor(cell: View, targetColor: Int, duration: Long = 200L) {
@@ -73,5 +75,23 @@ class CubeActivity : AppCompatActivity() {
             }
             start()
         }
+    }
+
+    private fun View.scaleDown(duration: Long = 200L) {
+        this.animate()
+            .scaleX(0.9f)
+            .scaleY(0.9f)
+            .setDuration(duration)
+            .setInterpolator(AccelerateDecelerateInterpolator())
+            .start()
+    }
+
+    private fun View.scaleToOriginal(duration: Long = 200L) {
+        animate()
+            .scaleX(1f)
+            .scaleY(1f)
+            .alpha(1f)
+            .setDuration(duration)
+            .start()
     }
 }
