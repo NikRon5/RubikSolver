@@ -14,6 +14,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.children
 import com.example.rubiksolver.R
 import com.example.rubiksolver.domain.models.CubeColors
+import com.example.rubiksolver.domain.models.CubeFace
 
 class CubeActivity : AppCompatActivity() {
     private var selectedCell: View? = null
@@ -49,11 +50,15 @@ class CubeActivity : AppCompatActivity() {
     }
 
     private fun getFaceColor(cubeFaceGrid: GridLayout): Int {
-        val face = cubeFaceGrid.resources.getResourceName(cubeFaceGrid.id)
-            .substringAfter("id/")
+        val faceId = cubeFaceGrid.resources.getResourceEntryName(cubeFaceGrid.id)
+        val faceName = faceId
             .substringBefore("_face")
+            .uppercase()
 
-        return CubeColors.centerColors[face]!!
+        return CubeFace.entries
+            .firstOrNull { it.name == faceName }
+            ?.let { CubeColors.getFaceColor(it) }
+            ?: throw IllegalStateException("Invalid face ID format. Expected '*_face', got: $faceId")
     }
 
     private fun initCellColor(cell: View, color: Int) {
