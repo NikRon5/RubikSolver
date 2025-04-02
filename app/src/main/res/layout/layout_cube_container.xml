@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/full_grid"
+    android:id="@+id/cube_container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="16dp">
@@ -10,7 +10,7 @@
     <!-- Front -->
     <include
         android:id="@+id/front_face"
-        layout="@layout/face_grid"
+        layout="@layout/layout_cube_face"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
@@ -21,7 +21,7 @@
     <!-- Up -->
     <include
         android:id="@+id/up_face"
-        layout="@layout/face_grid"
+        layout="@layout/layout_cube_face"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@id/front_face"
@@ -30,7 +30,7 @@
     <!-- Left -->
     <include
         android:id="@+id/left_face"
-        layout="@layout/face_grid"
+        layout="@layout/layout_cube_face"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toStartOf="@id/front_face"
@@ -39,7 +39,7 @@
     <!-- Right -->
     <include
         android:id="@+id/right_face"
-        layout="@layout/face_grid"
+        layout="@layout/layout_cube_face"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toEndOf="@id/front_face"
@@ -48,7 +48,7 @@
     <!-- Down -->
     <include
         android:id="@+id/down_face"
-        layout="@layout/face_grid"
+        layout="@layout/layout_cube_face"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/front_face"
@@ -57,7 +57,7 @@
     <!-- Back -->
     <include
         android:id="@+id/back_face"
-        layout="@layout/face_grid"
+        layout="@layout/layout_cube_face"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/down_face"
