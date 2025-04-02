@@ -22,7 +22,7 @@ class CubeActivity : AppCompatActivity() {
         }
 
         cubeController = CubeController(
-            rootView = findViewById(R.id.cube_container),
+            rootView = findViewById(R.id.include_cube_container),
             vibrationEnabled = true
         )
 
