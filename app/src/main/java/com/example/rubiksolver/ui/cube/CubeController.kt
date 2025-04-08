@@ -51,7 +51,7 @@ class CubeController(
 
     private fun handleCellClick(cell: View) {
         if (vibrationEnabled) {
-            cell.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY)
+            cell.performHapticFeedback(HapticFeedbackConstants.CONTEXT_CLICK)
         }
 
         selectedCell?.scaleToOriginal()
