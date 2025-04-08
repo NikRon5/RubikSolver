@@ -7,8 +7,61 @@
     android:layout_height="match_parent"
     tools:context=".ui.cube.CubeActivity">
 
+
+    <!-- Cube Container -->
     <include
         android:id="@+id/include_cube_container"
         layout="@layout/layout_cube_container"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         />
+
+    <!-- Palette -->
+    <LinearLayout
+        android:id="@+id/color_palette"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:layout_marginBottom="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <View
+            android:id="@+id/color_white"
+            style="@style/ColorPaletteItem"
+            android:background="@color/cube_white"
+            android:tag="WHITE"/>
+        <View
+            android:id="@+id/color_blue"
+            style="@style/ColorPaletteItem"
+            android:background="@color/cube_blue"
+            android:tag="BLUE"/>
+        <View
+            android:id="@+id/color_green"
+            style="@style/ColorPaletteItem"
+            android:background="@color/cube_green"
+            android:tag="GREEN"/>
+
+        <View
+            android:id="@+id/color_red"
+            style="@style/ColorPaletteItem"
+            android:background="@color/cube_red"
+            android:tag="RED"/>
+
+        <View
+            android:id="@+id/color_orange"
+            style="@style/ColorPaletteItem"
+            android:background="@color/cube_orange"
+            android:tag="ORANGE"/>
+
+        <View
+            android:id="@+id/color_yellow"
+            style="@style/ColorPaletteItem"
+            android:background="@color/cube_yellow"
+            android:tag="YELLOW"/>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
