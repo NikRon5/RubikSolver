@@ -27,7 +27,7 @@ object CubeColors {
         return try {
             Color.parseColor(hex)
         } catch (e: IllegalArgumentException) {
-            Color.BLACK
+            Color.WHITE
         }
     }
 }
