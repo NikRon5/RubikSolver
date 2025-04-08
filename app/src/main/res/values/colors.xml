@@ -4,4 +4,12 @@
     <color name="white">#FFFFFFFF</color>
     <color name="gray">#808080</color>
     <color name="blue">#0000FF</color>
+
+    <!-- Rubik's cube colors -->
+    <color name="cube_white">#FFFFFF</color>
+    <color name="cube_blue">#0051BA</color>
+    <color name="cube_orange">#FFA500</color>
+    <color name="cube_red">#C41E3A</color>
+    <color name="cube_yellow">#FFD500</color>
+    <color name="cube_green">#009E60</color>
 </resources>
