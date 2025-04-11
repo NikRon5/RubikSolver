@@ -58,4 +58,8 @@ class CubeController(
         selectedCell = cell
         cell.scaleDown()
     }
+
+    fun changeSelectedCellColor(color: Int) {
+        selectedCell?.setBackgroundColorAnimated(color, 150)
+    }
 }
