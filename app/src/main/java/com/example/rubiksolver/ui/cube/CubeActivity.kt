@@ -1,11 +1,13 @@
 package com.example.rubiksolver.ui.cube
 
 import android.os.Bundle
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.rubiksolver.R
+import com.example.rubiksolver.extensions.colorNameToInt
 
 
 class CubeActivity : AppCompatActivity() {
@@ -27,5 +29,24 @@ class CubeActivity : AppCompatActivity() {
         )
 
         cubeController.setupCube()
+        setupColorPalette()
+    }
+
+    private fun setupColorPalette() {
+        val colorViews = listOf(
+            R.id.palette_color_white,
+            R.id.palette_color_blue,
+            R.id.palette_color_green,
+            R.id.palette_color_red,
+            R.id.palette_color_orange,
+            R.id.palette_color_yellow
+        )
+
+        colorViews.forEach { colorViewId ->
+            findViewById<View>(colorViewId).setOnClickListener { view ->
+                val color = view.tag.toString().colorNameToInt()
+                cubeController.changeSelectedCellColor(color)
+            }
+        }
     }
 }
