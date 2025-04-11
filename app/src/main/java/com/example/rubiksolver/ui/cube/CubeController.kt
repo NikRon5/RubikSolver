@@ -54,9 +54,18 @@ class CubeController(
             cell.performHapticFeedback(HapticFeedbackConstants.CONTEXT_CLICK)
         }
 
-        selectedCell?.scaleToOriginal()
+        clearSelection()
         selectedCell = cell
-        cell.scaleDown()
+        addSelection()
+    }
+
+    private fun clearSelection() {
+        selectedCell?.scaleToOriginal()
+        selectedCell = null
+    }
+
+    private fun addSelection() {
+        selectedCell?.scaleDown()
     }
 
     fun changeSelectedCellColor(color: Int) {
