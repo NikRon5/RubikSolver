@@ -59,7 +59,7 @@ class CubeController(
         addSelection()
     }
 
-    private fun clearSelection() {
+    fun clearSelection() {
         selectedCell?.scaleToOriginal()
         selectedCell = null
     }

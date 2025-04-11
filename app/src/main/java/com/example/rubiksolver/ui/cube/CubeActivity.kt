@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.rubiksolver.R
@@ -23,12 +24,19 @@ class CubeActivity : AppCompatActivity() {
             insets
         }
 
+        val cubeContainer = findViewById<ConstraintLayout>(R.id.include_cube_container)
+
         cubeController = CubeController(
-            rootView = findViewById(R.id.include_cube_container),
+            rootView = cubeContainer,
             vibrationEnabled = true
         )
 
         cubeController.setupCube()
+
+        cubeContainer.setOnClickListener {
+            cubeController.clearSelection()
+        }
+
         setupColorPalette()
     }
 
