@@ -10,10 +10,11 @@
     <style name="ColorPaletteItem">
         <item name="android:layout_width">48dp</item>
         <item name="android:layout_height">48dp</item>
-        <item name="android:layout_margin">4dp</item>
+        <item name="android:layout_margin">8dp</item>
         <item name="android:clickable">true</item>
         <item name="android:focusable">true</item>
         <item name="android:elevation">2dp</item>
         <item name="android:outlineProvider">background</item>
+        <item name="android:foreground">@drawable/palette_item_background</item>
     </style>
 </resources>
