@@ -18,50 +18,64 @@
         />
 
     <!-- Palette -->
-    <LinearLayout
+    <GridLayout
         android:id="@+id/color_palette"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal"
+        android:layout_marginBottom="30dp"
         android:padding="8dp"
-        android:layout_marginBottom="50dp"
+        android:columnCount="3"
+        android:rowCount="2"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <View
             android:id="@+id/palette_color_white"
             style="@style/ColorPaletteItem"
+            android:layout_row="0"
+            android:layout_column="0"
             android:background="@color/cube_white"
             android:tag="WHITE"/>
+
         <View
             android:id="@+id/palette_color_blue"
             style="@style/ColorPaletteItem"
+            android:layout_row="0"
+            android:layout_column="1"
             android:background="@color/cube_blue"
             android:tag="BLUE"/>
+
         <View
             android:id="@+id/palette_color_green"
             style="@style/ColorPaletteItem"
+            android:layout_row="0"
+            android:layout_column="2"
             android:background="@color/cube_green"
             android:tag="GREEN"/>
 
         <View
             android:id="@+id/palette_color_red"
             style="@style/ColorPaletteItem"
+            android:layout_row="1"
+            android:layout_column="0"
             android:background="@color/cube_red"
             android:tag="RED"/>
 
         <View
             android:id="@+id/palette_color_orange"
             style="@style/ColorPaletteItem"
+            android:layout_row="1"
+            android:layout_column="1"
             android:background="@color/cube_orange"
             android:tag="ORANGE"/>
 
         <View
             android:id="@+id/palette_color_yellow"
             style="@style/ColorPaletteItem"
+            android:layout_row="1"
+            android:layout_column="2"
             android:background="@color/cube_yellow"
             android:tag="YELLOW"/>
-    </LinearLayout>
+    </GridLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
