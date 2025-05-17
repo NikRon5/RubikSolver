@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("com.chaquo.python")
 }
 
 android {
@@ -15,6 +16,10 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        ndk {
+            abiFilters += listOf("arm64-v8a", "x86_64")
+        }
     }
 
     buildTypes {
@@ -35,8 +40,19 @@ android {
     }
 }
 
-dependencies {
+chaquopy {
+    defaultConfig {
+        version = "3.8"
+    }
+    sourceSets {
+        getByName("main") {
+            srcDir("src/main/java/com/example/rubiksolver/ui/cube/solver")
+        }
+    }
+}
 
+dependencies {
+    implementation(libs.kotlinx.coroutines.android)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
