@@ -1,14 +1,25 @@
 package com.example.rubiksolver.ui.cube
 
+import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.lifecycleScope
+import com.chaquo.python.Python
+import com.chaquo.python.android.AndroidPlatform
 import com.example.rubiksolver.R
 import com.example.rubiksolver.extensions.colorNameToInt
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import java.io.IOException
+import java.io.InputStream
 
 
 class CubeActivity : AppCompatActivity() {
@@ -38,6 +49,27 @@ class CubeActivity : AppCompatActivity() {
         }
 
         setupColorPalette()
+
+
+        lifecycleScope.launch {
+            try {
+                val result = withContext(Dispatchers.IO) {
+                    if (!Python.isStarted()) {
+                        Python.start(AndroidPlatform(this@CubeActivity))
+                    }
+                    val python = Python.getInstance()
+                    val module = python.getModule("cube_solver")
+                    module.callAttr("solve_cube", "debug").toString()
+                }
+            } catch (e: Exception) {
+                Log.e("MyLog", "Ошибка: ${e.message} ${e.stackTraceToString()}")
+            }
+        }
+
+
+        val cubeState = cubeController.getCubeState()
+        Log.d("My log", cubeState.toString())
+
     }
 
     private fun setupColorPalette() {
